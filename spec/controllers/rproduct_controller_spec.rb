@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe RproductController, :type => :controller do
+RSpec.describe RproductsController, :type => :controller do
 	describe "test get method" do
 		it "should get 200 when get successful" do
 			product = Rproduct.create!(:name => "test")
 			get :index
 			expect(response.status).to be(200)
-			json = RproductController.json_parser(response.body)
+			json = ApplicationHelper.json_parser(response.body)
 			expect(json.length).to be(1)
 			expect(json.at(0)['name']).to eq("test")
 		end
@@ -28,7 +28,7 @@ RSpec.describe RproductController, :type => :controller do
 			Rproduct.create!(:name => "test")
 			get :show, {:id => 1}
 			expect(response.status).to be(200)
-			json = RproductController.json_parser(response.body)
+			json = ApplicationHelper.json_parser(response.body)
 			expect(json["name"]).to eq("test")
 		end
 		it "should return 404 when product not found" do

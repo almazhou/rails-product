@@ -10,6 +10,10 @@ RSpec.describe PricingsController, :type => :controller do
 			json = ApplicationHelper.json_parser(response.body)
 			expect(json["amount"]).to eq(45)
 		end
+		it "should return 404 when cannot find product" do
+			get :index, {:rproduct_id => 1}
+			expect(response.status).to be(404)
+		end
 	end
 
 end

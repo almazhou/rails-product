@@ -14,4 +14,16 @@ class RproductController < ApplicationController
 		@product.save
 		head 201
 	end
+	def show
+		begin
+			@product = Rproduct.find(params[:id])
+			render json:@product,status:200
+		rescue
+			head 404
+		end
+	end
+
+	def self.json_parser(parsing_object)
+		JSON.parse(parsing_object)
+	end
 end

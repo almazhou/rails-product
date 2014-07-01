@@ -10,6 +10,10 @@ RSpec.describe RproductController, :type => :controller do
 			expect(json.length).to be(1)
 			expect(json.at(0)['name']).to eq("test")
 		end
+		it "should return 404 when cannot find any thing" do
+			get :index
+			expect(response.status).to be(404)
+		end
 
 	end
 

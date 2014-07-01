@@ -16,4 +16,15 @@ class PricingsController < ApplicationController
 			head 404
 		end
 	end
+
+	def create
+		@param = params.permit(:amount,:rproduct_id)
+
+		@param[:amount] = params[:amount]
+		@param[:rproduct_id] = params[:rproduct_id]
+
+		pricing = Pricing.new(@param)
+		pricing.save
+		head 201
+	end
 end

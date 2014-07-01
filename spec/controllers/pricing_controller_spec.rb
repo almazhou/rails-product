@@ -16,7 +16,7 @@ RSpec.describe PricingsController, :type => :controller do
 		end
 	end
 
-	describe "test post" do
+	describe "test get one specific pricing" do
 		it "should get 200 when get one specific pricing" do
 		pricing = Pricing.create!(:amount => 45,:rproduct_id => 1)
 		
@@ -25,6 +25,13 @@ RSpec.describe PricingsController, :type => :controller do
 		expect(response.status).to be(200)
 		json = ApplicationHelper.json_parser(response.body)
 		expect(json["amount"]).to eq(45)
+		end
+	end
+
+	describe "test post" do
+		it "should get 201 when post for pricing" do
+			post :create,{:amount => 45,:rproduct_id => 1}
+			expect(response.status).to be(201)
 		end
 	end
 

@@ -16,5 +16,11 @@ RSpec.describe RproductController, :type => :controller do
 		end
 
 	end
+	describe "test post" do
+		it "should get 201 when post successful" do
+			post :create,{:name => "test"}
+			expect(response.status).to be(201)
+		end
+	end
 
 end

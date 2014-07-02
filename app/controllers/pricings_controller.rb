@@ -3,7 +3,7 @@ class PricingsController < ApplicationController
 		begin
 			@pricings = Pricing.find(params[:rproduct_id])
 
-			render json:@pricings,status:200
+			render "pricings/index.json"
 		rescue ActiveRecord::RecordNotFound
 			head 404
 		end

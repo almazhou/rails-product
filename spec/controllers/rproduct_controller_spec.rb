@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RproductsController, :type => :controller do
+	render_views 
 	describe "test get method" do
 		it "should get 200 when get successful" do
 			product = Rproduct.create!(:name => "test")

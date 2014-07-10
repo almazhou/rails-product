@@ -5,11 +5,22 @@ class CustomersController < ApplicationController
 	end
 
 	def show
-		@customer = Customer.find(params[:id]);
+		@customer = Customer.find(params[:id])
+	end
+
+	def create
+		customer = Customer.new(customer_params)
+		customer.save()
+		response.location = customer_url customer
+		head 201
 	end
 
 	private
 	def not_found
 		head 404
+	end
+
+	def customer_params
+		params.require(:customer).permit(:name)
 	end
 end

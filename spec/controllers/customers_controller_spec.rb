@@ -28,5 +28,11 @@ RSpec.describe CustomersController, :type => :controller do
 			get :show, id:10000, format: :json
 			expect(response.status).to be(404);
 		end
+
+		it "should return 201 and location for post one customer success" do
+			post :create, :customer => {name: "test1"}
+			expect(response.status).to be(201);
+			expect(response.header["Location"]).to match("/customers/");
+		end
 	end 
 end

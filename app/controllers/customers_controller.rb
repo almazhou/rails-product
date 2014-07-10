@@ -1,6 +1,9 @@
 class CustomersController < ApplicationController
 	def index
 		@customers = Customer.all
-		render "customers/index.json"
+	end
+
+	def show
+		@customer = Customer.find(params[:id]);
 	end
 end

@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.where(customer_id: params[:customer_id],id: params[:id]).first
+		render json: @order, status: 200
 	end
 
 	private

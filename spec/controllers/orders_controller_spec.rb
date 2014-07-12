@@ -24,6 +24,12 @@ RSpec.describe OrdersController, :type => :controller do
 			expect(order["customer_id"]).to eq(@customer.id);
 		end
 
+		it "should return 201 for post one order" do
+			post :create,customer_id:1,order: {totalCost: 45.0}
+
+			expect(response.status).to be(201)
+		end
+
 	end
 
 end

@@ -24,6 +24,12 @@ RSpec.describe OrdersController, :type => :controller do
 			expect(order["customer_id"]).to eq(@customer.id);
 		end
 
+		it "should return 404 for get one order doesn't exist" do
+			get :show, customer_id: 1, id: 9, format: :json
+
+			expect(response.status).to be(404);
+		end
+
 		it "should return 201 for post one order" do
 			post :create,customer_id:1,order: {totalCost: 45.0}
 

@@ -11,7 +11,6 @@ RSpec.describe CustomersController, :type => :controller do
 			expect(response.status).to be(200)
 			customerJson = ApplicationHelper.json_parser(response.body);
 			expect(customerJson[0]["name"]).to eq("test");
-
 			expect(customerJson[0]["uri"]).to match("/customers/" + @customer.id.to_s);
 		end
 
